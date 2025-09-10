@@ -1,0 +1,7 @@
+{
+  "name": "Plateful",
+  "description": "Snap or upload a photo of your ingredients, and let AI transform them into delicious recipe recommendations, complete with stunning AI-generated images of the final dish.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
