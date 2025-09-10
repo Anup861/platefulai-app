@@ -1,11 +1,13 @@
+
 import { GoogleGenAI, Type } from "@google/genai";
 import type { Recipe } from '../types';
 
-// Use `import.meta.env.VITE_API_KEY` for Vite projects
-const apiKey = import.meta.env.VITE_API_KEY;
+// FIX: Switched from `import.meta.env.VITE_API_KEY` to `process.env.API_KEY` to align with the
+// coding guidelines and resolve the TypeScript error 'Property 'env' does not exist on type 'ImportMeta''.
+const apiKey = process.env.API_KEY;
 
 if (!apiKey) {
-  throw new Error("VITE_API_KEY environment variable not set. Please ensure it is configured in your Vercel project settings.");
+  throw new Error("API_KEY environment variable not set. Please ensure it is configured in your Vercel project settings.");
 }
 
 const ai = new GoogleGenAI({ apiKey });
@@ -211,3 +213,4 @@ export async function getPopularRecipes(): Promise<Omit<Recipe, 'imageUrl'>[]> {
 
     return parseAndPrepareRecipes(response.text.trim());
 }
+
